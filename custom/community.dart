@@ -1,0 +1,163 @@
+import 'package:flutter/material.dart';
+import 'package:youtube_1/const/style.dart';
+import 'package:youtube_1/custom/settingscont.dart';
+
+class community extends StatelessWidget {
+  const community({super.key, required this.creatorname, required this.posttime, required this.post, required this.option1, required this.option2, required this.option3, required this.option4, required this.option5, required this.votes, required this.creatorimage});
+  final String creatorname;
+  final String posttime;
+  final String post;
+  final String option1;
+  final String option2;
+  final String option3;
+  final String option4;
+  final String option5;
+  final String votes;
+  final String creatorimage;
+  
+
+  @override
+  Widget build(BuildContext context) {
+    var mywidth= MediaQuery.of(context).size.width;
+    var myheight= MediaQuery.of(context).size.height;
+    return Container(
+      height: 670,width: mywidth,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(height: 50,width: mywidth,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(backgroundImage: AssetImage(creatorimage),),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8, top: 6),
+                      child: Column(
+                        children: [
+                          Container(height: 20,width: 200,
+                          child: Text(creatorname, style: textStyleW700.copyWith(fontSize: 15),),),
+                          Container(height: 20,width: 200,
+                          child: Text(posttime, style: textstylegrey,),),
+                                      
+                        ],
+                      ),
+                    ),
+                
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                  onPressed: () {
+                    showModalBottomSheet(context: context,
+                     backgroundColor: Colors.white,
+                  showDragHandle: true,
+                  isScrollControlled: true,
+                     builder: (context) {
+                       return Wrap(
+                        children: [settingscontainer(text: 'Report', iconData: Icons.flag_outlined,)],
+                       );
+                     },);
+                  },
+                  icon:Icon(Icons.more_vert)),
+                )
+              ],
+            ),),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(height: 80,width: mywidth,
+            child: Text(post, style: TextStyle(fontSize: 18),),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+            child: Container(height: 50,width: mywidth,decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
+            child: Center(child: Text(option1)),
+            ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+            child: Container(height: 50,width: mywidth,decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
+            child: Center(child: Text(option2)),
+            ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+            child: Container(height: 50,width: mywidth,decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
+            child: Center(child: Text(option3)),
+            ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+            child: Container(height: 50,width: mywidth,decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
+            child: Center(child: Text(option4)),
+            ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, top: 8),
+            child: Container(height: 50,width: mywidth,decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
+            child: Center(child: Text(option5)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(height: 20,width: mywidth,child: Text(votes, style: textstylegrey,),),
+          ),
+          Container(height: 50,width: mywidth,child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.thumb_up_outlined),
+                ),Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Icon(Icons.thumb_down_outlined),
+                )
+              ],),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(Icons.comment_outlined),
+              ),
+             
+            ],
+          ),),
+
+           Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: myheight/9,width: mywidth,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                      color:Color.fromARGB(255, 232, 230, 230)),
+                      child: Column(
+                        children: [
+                          Container(width: mywidth,height: 40,child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Comments',style: textStyleW700.copyWith(fontSize: 16), ),
+                              ),
+                              Text('26', style: TextStyle(color: const Color.fromARGB(255, 60, 60, 60)),)
+                            ],
+                          ),),
+                          Row(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CircleAvatar(radius: 14,backgroundColor: Colors.blue,),
+                            ),
+                            Text('Keep it up bro')
+                          ],)
+                        ],
+                      ),
+                    ),
+                  ),
+        ],
+      ),
+    );
+  }
+}
